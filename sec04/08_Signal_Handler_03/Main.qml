@@ -6,7 +6,9 @@ Window {
 
     signal msgReceived(string person, string notice)
 
+    // Window의 로딩이 끝나면
     Component.onCompleted: {
+        // 시그널과 함수의 연결
         relay.msgReceived.connect(sendToPost)
         relay.msgReceived.connect(sendToEmail)
     }
@@ -14,6 +16,7 @@ Window {
     MouseArea {
         anchors.fill: parent
         onClicked: {
+           // 마우스를 클릭하면 시그널 발생 
            relay.msgReceived("Kim Dae Jin", "Happy Birthday")
         }
     }
